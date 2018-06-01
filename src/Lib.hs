@@ -5,9 +5,62 @@ module Lib
 someFunc :: IO ()
 someFunc = do
     putStrLn "\nChapter 3.8 -- Chapter Exercises"
-    questionOne
-    questionTwo
+    -- questionOne
+    -- questionTwo
+    -- buildingFunctions
+    putStrLn "\nChapter 4"
+    -- changingMoods
+    booleanMistakes
 
+
+booleanMistakes :: IO ()
+booleanMistakes = do
+    putStrLn "\nBoolean Mistakes"
+    print $ not True && True
+    print $ not (4 == 6)
+    print $ (1 * 2) > 5
+    print $ ["Merry"] > ["Happy"]
+    print $ ['1', '2', '3'] ++ " look at me!"
+
+changingMoods :: IO ()
+changingMoods = do
+    putStrLn "\nChanging Moods..."
+    print $ changeMood Blah
+    where
+        changeMood :: Mood -> Mood
+        changeMood Blah = Woot
+        changeMood _ = Blah
+
+data Mood = Blah | Woot deriving Show
+
+buildingFunctions :: IO ()
+buildingFunctions = do
+    putStrLn "\nBuilding Functions"
+    print $ addBang "Curry is awesome"
+    print $ theFourth "Curry is awesome!"
+    print $ notTail "Curry is awesome!"
+    print $ letterIndex 6
+    print $ rvrs "Curry is awesome"
+    where
+        addBang :: [Char] -> [Char]
+        addBang s = s ++ "!"
+
+        theFourth :: String -> Char
+        theFourth s = s !! 4
+
+        notTail :: [Char] -> [Char]
+        notTail s = drop 9 s
+
+        letterIndex :: Int -> Char
+        letterIndex i = "Curry is awesome!" !! i
+
+        rvrs :: String -> String
+        rvrs s = let
+            lstwd = drop 9 s
+            scndwd = take 4 $ drop 5 s
+            fstwd = take 5 s
+            in
+            lstwd ++ scndwd ++ fstwd
 
 questionTwo :: IO ()
 questionTwo = do
